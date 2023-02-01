@@ -1,35 +1,13 @@
-## Getting Started
+## Information
 
-Create a project using this example:
+- This is a NextJS, javascript project built using the `npx thirdweb create app` command
 
-```bash
-npx thirdweb create --template next-javascript-starter
-```
+- Private key: I am reading my private key from the dev file in the config folder which I am not committing to Git. Feel free to either add the dev.js file in the config folder or replace keys.ThirdWebprivateKey with your key
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Contract: I deployed the contract via CLI and you can see the address in the code
 
-On `pages/_app.js`, you'll find our `ThirdwebProvider` wrapping your app, this is necessary for our [hooks](https://portal.thirdweb.com/react) and
-[UI Components](https://portal.thirdweb.com/ui-components) to work.
+- Use case: everything happens on the server side, meaning that it is the owner of the smart contract that will communicate with it via ThirdWeb SDK and using the data sent by the user.
 
-### Deploy to IPFS
+- UI: In the UI, there is a simple Write button that writes some random strings in the smart contract and a simple Read button which should read the data. I am using tokenID = 10 as an example of writing and reading info related to that token. The results of the calls are logged in the console
 
-Deploy a copy of your application to IPFS using the following command:
-
-```bash
-yarn deploy
-```
-
-## Learn More
-
-To learn more about thirdweb and Next.js, take a look at the following resources:
-
-- [thirdweb React Documentation](https://docs.thirdweb.com/react) - learn about our React SDK.
-- [thirdweb JavaScript Documentation](https://docs.thirdweb.com/react) - learn about our JavaScript/TypeScript SDK.
-- [thirdweb Portal](https://docs.thirdweb.com/react) - check our guides and development resources.
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-
-You can check out [the thirdweb GitHub organization](https://github.com/thirdweb-dev) - your feedback and contributions are welcome!
-
-## Join our Discord!
-
-For any questions, suggestions, join our discord at [https://discord.gg/thirdweb](https://discord.gg/thirdweb).
+As of now, using `onlyRole(DEFAULT_ADMIN_ROLE)` works for the write function but it gives me a permission error in the read function
