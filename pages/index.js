@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   const writeData = async () => {
     const data = {
-      _tokenID: 100,
+      _tokenID: 10,
       _firstLink: "abc",
       _secondLink: "abc",
       _thirdLink: "abc",
