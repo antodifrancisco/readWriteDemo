@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@thirdweb-dev/react": "^3.9.0-nightly-37f58b4",
-    "@thirdweb-dev/sdk": "^3",
+    "@thirdweb-dev/sdk": "^3.9.0-nightly-37f58b4",
     "delegatecash-button-react": "^0.1.6",
     "ethers": "^5.6.8",
     "next": "^13",

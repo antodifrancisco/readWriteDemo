@@ -1,21 +1,25 @@
-import { useAddress, useMetamask } from "@thirdweb-dev/react";
+//import { useAddress, useMetamask } from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
-import DelegateCashButton from "delegatecash-button-react";
+import dynamic from "next/dynamic";
+
+const DelegateCashButton = dynamic(() => import("delegatecash-button-react"), {
+  ssr: false,
+});
 
 export default function Home() {
-  const [walletError, setWalletError] = useState(null);
-  const address = useAddress();
-  const connectWithMetamask = useMetamask();
+  //const [walletError, setWalletError] = useState(null);
+  //const address = useAddress();
+  //const connectWithMetamask = useMetamask();
 
-  const handleConnect = async () => {
-    const data = await connectWithMetamask();
-    if (data.error) {
-      setWalletError(data.error);
-    } else {
-      console.log(address);
-    }
-  };
+  // const handleConnect = async () => {
+  //   const data = await connectWithMetamask();
+  //   if (data.error) {
+  //     setWalletError(data.error);
+  //   } else {
+  //     console.log(address);
+  //   }
+  // };
 
   return (
     <div className={styles.container}>
@@ -23,10 +27,10 @@ export default function Home() {
         <h1 className={styles.title}>Delegate.Cash test</h1>
 
         <div className={styles.grid}>
-          <div className={styles.card}>
+          {/* <div className={styles.card}>
             <button onClick={handleConnect}>Connect wallet</button>
             <p>Connect wallet</p>
-          </div>
+          </div> */}
 
           <div className={styles.card}>
             <p>Connect with Delegate.Cash</p>
