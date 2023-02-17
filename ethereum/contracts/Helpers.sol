@@ -37,6 +37,24 @@ contract Helpers is Permissions {
     emit newTokenInfoSaved (_tokenID);
   }
 
+  function updateTokenListInfo(uint256[] memory _originalTokenIDs,  string[] memory _firstLinks, string[] memory _secondLinks, string[] memory _thirdLinks, string[] memory _fourthLinks, string[] memory _mintedLinks) public onlyRole(DEFAULT_ADMIN_ROLE) {
+    
+    for (uint i = 0; i < _originalTokenIDs.length; i++) {
+      TokenInfo memory newTokenInfo = TokenInfo({
+            tokenID: _originalTokenIDs[i],
+            firstLink: _firstLinks[i],
+            secondLink: _secondLinks[i],
+            thirdLink: _thirdLinks[i],
+            fourthLink: _fourthLinks[i],
+            mintedLink: _mintedLinks[i]
+        });
+
+    listTokenInfo[_originalTokenIDs[i]] = newTokenInfo;
+    }
+    
+  }
+
+
   function getTokenInfo(uint256 _tokenID) public view onlyRole(DEFAULT_ADMIN_ROLE) returns (TokenInfo memory)  {
     return listTokenInfo[_tokenID];
   }

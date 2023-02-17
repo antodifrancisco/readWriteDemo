@@ -1,12 +1,9 @@
 import { ThirdwebSDK } from "@thirdweb-dev/sdk/evm";
 import keys from "../../config/keys";
 
-const sdk = ThirdwebSDK.fromPrivateKey(
-  keys.thirdWebPrivateKey,
-  "arbitrum-goerli"
-);
+const sdk = ThirdwebSDK.fromPrivateKey(keys.thirdWebPrivateKey, "arbitrum");
 
-const contractAddress = "0x91d4CABA4d03f64a72b36c023B3f272B5Bcc4ac2";
+const contractAddress = "0xCe79c48Ecad7521099F12408B42E2Dfcb0a25c46";
 
 export default async function saveImages(req, res) {
   const contract = await sdk.getContract(contractAddress);
@@ -22,7 +19,7 @@ export default async function saveImages(req, res) {
       _secondLink,
       _thirdLink,
       _fourthLink,
-      ""
+      "abcderet"
     );
 
     res.status(200).json({
