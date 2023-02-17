@@ -1,20 +1,12 @@
 import { useAddress, useMetamask } from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
-import { useContract, useContractWrite } from "@thirdweb-dev/react";
 import { useState } from "react";
+import DelegateCashButton from "delegatecash-button-react";
 
 export default function Home() {
   const [walletError, setWalletError] = useState(null);
   const address = useAddress();
   const connectWithMetamask = useMetamask();
-  // Dashboard contract: https://thirdweb.com/arbitrum-nova/0xCe79c48Ecad7521099F12408B42E2Dfcb0a25c46
-  const { contract } = useContract(
-    "0xCe79c48Ecad7521099F12408B42E2Dfcb0a25c46"
-  );
-  const { mutateAsync: myFunctionAsync } = useContractWrite(
-    contract,
-    "updateTokenListInfo"
-  );
 
   const handleConnect = async () => {
     const data = await connectWithMetamask();
@@ -25,25 +17,10 @@ export default function Home() {
     }
   };
 
-  const writeData = async () => {
-    const tx = await myFunctionAsync(
-      [0, 1, 2],
-      ["abc", "abc", "abc"],
-      ["abc", "abc", "abc"],
-      ["abc", "abc", "abc"],
-      ["abc", "abc", "abc"],
-      ["abc", "abc", "abc"]
-    );
-
-    console.log("TX: ", tx);
-  };
-
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://thirdweb.com/">thirdweb</a>!
-        </h1>
+        <h1 className={styles.title}>Delegate.Cash test</h1>
 
         <div className={styles.grid}>
           <div className={styles.card}>
@@ -52,8 +29,14 @@ export default function Home() {
           </div>
 
           <div className={styles.card}>
-            <button onClick={writeData}>Write</button>
-            <p>Write predetermined strings into the smart contract</p>
+            <p>Connect with Delegate.Cash</p>
+            <DelegateCashButton
+              connectedWallet="0x0000000000000000000000000000000000000001"
+              rpcUrl="https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
+              rounded={true}
+              onButtonClick={(event) => console.log(event.detail)}
+              onWalletSelect={(event) => console.log(event.detail)}
+            />
           </div>
         </div>
       </main>
